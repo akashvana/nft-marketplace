@@ -1,6 +1,6 @@
 [
   {
-    "creatorName": "Dony Herrera",
+    "creatorName": "Test User",
     "nftImage": "nft-image-1.png",
     "userImage": "user-1.png",
     "accountAddress": "0x829BD824B016326A401d083B33D092293333A830",
@@ -165,7 +165,7 @@
         "bool": true
       },
       {
-        "name": "Shoaib Sina",
+        "name": "Test Sina",
         "userImage": "user-2.png",
         "description": "@ether_cards, an NFT Monetization Platform Cryptopunk Collector, hoarder of NFTs. Contributing to",
         "bool": true
@@ -173,7 +173,7 @@
     ],
     "following": [
       {
-        "name": "Shoaib Sina",
+        "name": "Test Sina",
         "userImage": "user-3.png",
         "description": " Cryptopunk Collector, hoarder of NFTs. Contributing to @ether_cards, an NFT Monetization Platform",
         "bool": true

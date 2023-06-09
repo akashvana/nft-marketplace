@@ -4,6 +4,8 @@ import { ethers } from "ethers";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { create as ipfsHttpClient } from "ipfs-http-client";
+require("dotenv").config({ path: ".env" });
+
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 const projectSecretKey = process.env.NEXT_PUBLIC_SECRECT_KEY;
@@ -185,8 +187,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const fetchNFTs = async () => {
     try {
       const provider = new ethers.providers.JsonRpcProvider(
-        //--process.env.NEXT_PUBLIC_POLYGON_MUMBAI_RPC
-        "https://polygon-mumbai.g.alchemy.com/v2/0awa485pp03Dww2fTjrSCg7yHlZECw-K"
+        // --process.env.NEXT_PUBLIC_POLYGON_MUMBAI_RPC
+        "https://polygon-mumbai.g.alchemy.com/v2/uk-JtxXjQ_uu1okGUfwkg-gHRcUG9GKW"
       );
 
       const contract = fetchContract(provider);
