@@ -3,6 +3,7 @@ require("dotenv").config({ path: ".env" });
 
 const NEXT_PUBLIC_POLYGON_MUMBAI_RPC = process.env.NEXT_PUBLIC_POLYGON_MUMBAI_RPC
 const NEXT_PUBLIC_PRIVATE_KEY = process.env.NEXT_PUBLIC_PRIVATE_KEY;
+const POLYGONSCAN_KEY = process.env.POLYGONSCAN_KEY;
 /** @type import('hardhat/config').HardhatUserConfig */
 
 module.exports = {
@@ -15,5 +16,9 @@ module.exports = {
       accounts: [NEXT_PUBLIC_PRIVATE_KEY],
     },
   },
-
+  etherscan: {
+    apiKey: {
+      polygonMumbai: POLYGONSCAN_KEY,
+    },
+  }
 };
