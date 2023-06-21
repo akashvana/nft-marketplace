@@ -137,7 +137,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   };
 
   //---CREATENFT FUNCTION
-  const createNFT = async (name, price, image, description, router) => {
+  const createNFT = async (name, price, image, description, router, royalties) => {
     if (!name || !description || !price || !image)
       return setError("Data Is Missing"), setOpenError(true);
 
@@ -162,8 +162,11 @@ export const NFTMarketplaceProvider = ({ children }) => {
       const price = ethers.utils.parseUnits(formInputPrice, "ether");
 
       const contract = await connectingWithSmartContract();
+      console.log("Done with contract")
 
       const listingPrice = await contract.getListingPrice();
+      console.log("got the listing price", listingPrice);
+      // await contract.updateRoyaltyPercentage(formRoyaltyPercentage);
 
       const transaction = !isReselling
         ? await contract.createToken(url, price, {
@@ -173,7 +176,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
             value: listingPrice.toString(),
           });
 
+      console.log("next line")
       await transaction.wait();
+      console.log("transaction: ")
       console.log(transaction);
     } catch (error) {
       setError("error while creating sale");
@@ -287,11 +292,14 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const buyNFT = async (nft) => {
     try {
       const contract = await connectingWithSmartContract();
-      const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
+      console.log("This is the nft price without string: ", nft.price);
+      console.log("This is the nft price: ", nft.price.toString());
+      // const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
 
-      const transaction = await contract.createMarketSale(nft.tokenId, {
-        value: price,
-      });
+      const transaction = await contract.createMarketSale(nft.tokenId)
+        // , {
+        // value: price,
+      // });
 
       await transaction.wait();
       router.push("/author");
@@ -300,6 +308,26 @@ export const NFTMarketplaceProvider = ({ children }) => {
       setOpenError(true);
     }
   };
+
+
+  // function to make offer for bid: 
+  const makeOffer = async(nft, bidAmount) => {
+    try{
+      const contract = await connectingWithSmartContract();
+      console.log("This is the nft price: ", bidAmount.toString());
+      const price = ethers.utils.parseUnits(bidAmount.toString(), "ether");
+
+      const transaction = await contract.placeBid(nft.tokenId, {
+        value: price,
+      });
+
+      await transaction.wait();
+
+    }catch(error){
+      setError("Error while placing bid");
+      setOpenError(true);
+    }
+  }
 
   //------------------------------------------------------------------
 
@@ -407,6 +435,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         fetchNFTs,
         fetchMyNFTsOrListedNFTs,
         buyNFT,
+        makeOffer,
         createSale,
         currentAccount,
         titleData,

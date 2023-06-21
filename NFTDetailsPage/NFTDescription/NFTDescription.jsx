@@ -19,6 +19,7 @@ import {
   TiSocialInstagram,
 } from "react-icons/ti";
 import { BiTransferAlt, BiDollar } from "react-icons/bi";
+// import formStyle from "../AccountPage/Form/Form.module.css";
 
 //INTERNAL IMPORT
 import Style from "./NFTDescription.module.css";
@@ -35,6 +36,7 @@ const NFTDescription = ({ nft }) => {
   const [history, setHistory] = useState(true);
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
+  const [bidValue, setBidValue] = useState(0);
 
   const router = useRouter();
 
@@ -104,7 +106,7 @@ const NFTDescription = ({ nft }) => {
   };
 
   //SMART CONTRACT DATA
-  const { buyNFT, currentAccount } = useContext(NFTMarketplaceContext);
+  const { makeOffer, buyNFT, currentAccount } = useContext(NFTMarketplaceContext);
 
   return (
     <div className={Style.NFTDescription}>
@@ -281,11 +283,19 @@ const NFTDescription = ({ nft }) => {
                   classStyle={Style.button}
                 />
               )}
+                
+              <input
+                type="text"
+                placeholder="Bid Value"
+                onChange={(e) => setBidValue(e.target.value)}
+                style={{ width: '300px', height: '40px' }}
+              />
+                  
 
               <Button
                 icon={<FaPercentage />}
                 btnName="Make offer"
-                handleClick={() => {}}
+                handleClick={() => makeOffer(nft, bidValue)}
                 classStyle={Style.button}
               />
             </div>

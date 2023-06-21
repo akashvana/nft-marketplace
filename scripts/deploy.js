@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
   const NFTMarketplace = await hre.ethers.getContractFactory("NFTMarketplace");
-  const nftMarketplace = await NFTMarketplace.deploy("0xA6016Ea761eE113f448489C8CbA4741963178725");
+  const nftMarketplace = await NFTMarketplace.deploy("0x6FC51d05Be9dF5D4f14ed785b993EE305EB32466");
 
   await nftMarketplace.deployed();
 
@@ -23,7 +23,7 @@ async function main() {
   await hre.run("verify:verify", {
     address: nftMarketplace.address,
     contract: "contracts/NFTMarketplace.sol:NFTMarketplace",
-    constructorArguments: ["0xA6016Ea761eE113f448489C8CbA4741963178725"],
+    constructorArguments: ["0x6FC51d05Be9dF5D4f14ed785b993EE305EB32466"],
   });
 }
 

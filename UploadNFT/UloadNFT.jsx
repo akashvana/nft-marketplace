@@ -154,7 +154,9 @@ const UloadNFT = ({ uploadToIPFS, createNFT }) => {
           </div>
         </div>
 
+              
         <div className={formStyle.Form_box_input_social}>
+                {/*
           <div className={formStyle.Form_box_input}>
             <label htmlFor="Royalties">Royalties</label>
             <div className={formStyle.Form_box_input_box}>
@@ -195,6 +197,8 @@ const UloadNFT = ({ uploadToIPFS, createNFT }) => {
             </div>
           </div>
 
+              */}
+
           <div className={formStyle.Form_box_input}>
             <label htmlFor="Price">Price</label>
             <div className={formStyle.Form_box_input_box}>
@@ -219,9 +223,9 @@ const UloadNFT = ({ uploadToIPFS, createNFT }) => {
                 price,
                 image,
                 description,
-                router
+                router,
                 // website,
-                // royalties,
+                // royalties
                 // fileSize,
                 // category,
                 // properties

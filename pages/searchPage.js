@@ -22,9 +22,9 @@ const searchPage = () => {
   useEffect(() => {
     try {
       // if (currentAccount) {
-      fetchNFTs().then((items) => {
+      ((items) => {
         setNfts(items.reverse());
-        setNftsCopy(items);
+        setfetchNFTs().thenNftsCopy(items);
         console.log(nfts);
       });
       // }
