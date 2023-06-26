@@ -16,6 +16,8 @@ contract NFTMarketplace is ERC721URIStorage, ReentrancyGuard, Ownable {
     Counters.Counter private _itemsSold;
     address payable contractOwner;
     ERC20 public nftToken;
+
+    // change according to requirements
     uint256 public listingPrice = 0.025 ether;
     uint256 public duration = 5 minutes;
     uint256 public royaltyPercentage = 2;
@@ -55,6 +57,7 @@ contract NFTMarketplace is ERC721URIStorage, ReentrancyGuard, Ownable {
 
 
     constructor(address _nftToken)
+        // change to your token
         ERC721("NFT Market Token", "NFTT")
     {
         contractOwner = payable(msg.sender);
@@ -261,5 +264,4 @@ contract NFTMarketplace is ERC721URIStorage, ReentrancyGuard, Ownable {
     function getListingPrice() public view returns (uint256) {
         return listingPrice;
     }
-
 }

@@ -6,14 +6,7 @@ async function main() {
 
   await nftMarketplace.deployed();
 
-  // //TRANSFER FUNDS
-  // const TransferFunds = await hre.ethers.getContractFactory("TransferFunds");
-  // const transferFunds = await TransferFunds.deploy();
-
-  // await transferFunds.deployed();
-
   console.log(` deployed contract Address nft ${nftMarketplace.address}`);
-  // console.log(` deployed contract Address transfer ${transferFunds.address}`);
 
   console.log("Sleeping.....");
   // Wait for etherscan to notice that the contract has been deployed
